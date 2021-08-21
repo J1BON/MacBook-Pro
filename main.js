@@ -20,19 +20,21 @@ function amount(){
         
     const bestPrice = document.getElementById('best-price');
     const bestPriceText = parseInt(bestPrice.innerText);
-    const totalProductMony = parseInt(bestPriceText) + parseInt(memory) + parseInt(storageValue) + parseInt(deliveyValue);
+    const totalProductMoney = parseInt(bestPriceText) + parseInt(memory) + parseInt(storageValue) + parseInt(deliveyValue);
     
     const total = document.getElementById('total-price');
     const totalText = parseInt(total.innerText);
-    total.innerText = totalProductMony;
+    total.innerText = totalProductMoney;
 
     const allTotal = document.getElementById('total');
     const allTotalText = allTotal.innerText;
-    allTotal.innerText = totalProductMony
-    return totalProductMony ;
+    allTotal.innerText = totalProductMoney
+    return totalProductMoney ;
+    
 }
 
-//  eventhandler add------------------------------
+//  eventhandler add
+
 //  memory
 document.getElementById('memory-8').addEventListener('click',function(){
 const value = inputValues('memory-8','total-memory',0);
@@ -44,7 +46,8 @@ document.getElementById('memory-16').addEventListener('click',function(){
    amount();
 })
 
-// storage-----------------------------------
+// storage
+
 document.getElementById('stroage-256').addEventListener('click',function(){
    const value = inputValues('stroage-256','total-storage',0);
    amount();
@@ -78,14 +81,14 @@ document.getElementById('delivery-fast').addEventListener('click',function(){
 document.getElementById('pomo-btn').addEventListener('click',function(){
    const promo = document.getElementById('pomo-input')
     const promoText = promo.value;
-    if (promoText.includes('stevekaku')) {
+    if (promoText == 'stevekaku') {
         const bottomTotalText = document.getElementById('total');
         const bottomTotalValue = bottomTotalText.innerText
         const bottomTotal = parseInt(bottomTotalValue);
         const amount = bottomTotal * 0.2;
         const subtractAmount = bottomTotal - amount;
-        console.log(subtractAmount);
         bottomTotalText.innerText = subtractAmount;
     }
-    promo.value = '';
+   document.getElementById('pomo-btn').disabled = true;
+   promo.value = '';
 })
